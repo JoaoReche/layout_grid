@@ -1,0 +1,103 @@
+body,
+p {
+    padding: 0;
+    margin: 0;
+    font-size: 1.5rem;
+    color: #fff;
+    font-style: italic;
+    text-align: center;
+}
+
+.principal {
+    width: 80%;
+    /*para os conteúdos não ficarem colados nas laterais*/
+    margin: 0 auto;
+    display: grid;
+    /*utilizado para alinhar elementos de um container em duas dimensões, geralmente linhas e colunas*/
+    grid-template-columns: 75% 25%;
+    grid-template-rows: 100px 450px 150px;
+    grid-template-areas: "cabecalho cabecalho " "secao barra_lateral" "rodape rodape";
+}
+
+header {
+    grid-area: cabecalho;
+    background-color: rgb(67, 124, 67);
+}
+
+section {
+    grid-area: secao;
+    background-color: #E05da1;
+}
+
+aside {
+    grid-area: barra_lateral;
+    background-color: #E0D475;
+}
+
+footer {
+    grid-area: rodape;
+    display: flex;
+    /*utilizado para alinhar o elemento em uma única dimensão*/
+    justify-content: space-evenly;
+    /*propriedade para alinhar os elementos em uma dimensão, com espaçamento igual entre as partes*/
+}
+
+.fparte1,
+.fparte2,
+.fparte3 {
+    width: 25%;
+    background-color: rgb(179, 42, 42);
+}
+
+.fparte2 {
+    width: 50%;
+    margin: 0 2px;
+}
+
+.fparte3 {
+    margin: 0;
+}
+
+@media (max-width:992px) {
+    .principal {
+        grid-template-columns: 100%;
+        grid-template-areas: "cabecalho" "secao" "barra_lateral" "rodape";
+    }
+
+    footer {
+        display: flex;
+        flex-wrap: wrap;
+        /*Propriedade que indica ao navegador para colocar um elemento abaixo, caso não caiba mais um do lado do outro*/
+        text-align: center;
+    }
+
+    .fparte1,
+    .fparte2,
+    .fparte3 {
+        margin: 0;
+        border: 1px solid #000;
+        width: 49%;
+    }
+
+    .fparte2 {
+        width: 100%;
+        order: -1;
+    }
+}
+
+@media(max-width: 768px) {
+    body {
+        margin: 0 15px;
+    }
+
+    .principal,
+    .fparte1,
+    .fparte2,
+    .fparte3 {
+        width: 100%;
+    }
+
+    .fparte2 {
+        order: initial;
+    }
+}
